@@ -10,7 +10,13 @@
 
 <script type="text/javascript">
 
-var ourList = ["Go Christmas Shopping", "Pick up dry cleaning","Make a turkey", "Buy groceries", "Punch creppy santa", "Do Ruby homework"]
+$(function(){
+  $("button").click(function(){
+  var list =$("input:text").val("user text");
+  $('#container').append($(list));
+  });
+});
+
 
 
 $(function () {
@@ -22,11 +28,12 @@ $(function () {
 		
 	}
 
-    $('.listItem').click(function () {
+    $('listItem').click(function () {
   		$this = $(this)
 		$this.toggleClass("completed")
   	});
 });
+
 
 </script>
 
@@ -39,11 +46,9 @@ div {
 	padding: 20px
 }
 
-.listItem {
-	color:red
-	} 
 h1 {
-	text-align: center
+	text-align: center;
+	font-size: 300%;
 }
 
 div.completed {
@@ -55,12 +60,13 @@ div.completed {
 
 
 <h1>
-	To-Do List
+	Chistmas Shopping List
 </h1>
 
 <div id="container"></div>
 
-
+<p>Name: <input type="text" name=div></p>
+<button>Add</button>
 
 
 </body>
