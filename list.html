@@ -1,7 +1,7 @@
 <html>
 
 <head>
-<title> Our List
+<title> Christmas Shopping List
 </title>
 
 </head>
@@ -11,28 +11,24 @@
 <script type="text/javascript">
 
 $(function(){
+
   $("button").click(function(){
-  var list =$("input:text").val("user text");
-  $('#container').append($(list));
+  var name =$("input:text").val();
+  $("#container").append("<div class = 'listItem'>" + name + "</div>");
+  $("input:text").val('');
+
   });
 });
 
-
-
-$(function () {
-	for (var i= 0; i< ourList.length; i++ ){
-		var ourItem = ourList[i];
-	
-
-		$("#container").append("<div class = 'listItem'>" + ourItem + "</div>");
-		
-	}
-
-    $('listItem').click(function () {
-  		$this = $(this)
-		$this.toggleClass("completed")
-  	});
+  $('.listItem').click(function () {
+      $this = $(this)
+    $this.toggleClass('.completed')
 });
+
+
+
+</script>
+
 
 
 </script>
@@ -41,9 +37,9 @@ $(function () {
 <style>
 
 div {
-	border-style: solid;
-	border-width: 1px;
-	padding: 20px
+	padding: 20px;
+	font-size: 120%;
+	text-align: center;
 }
 
 h1 {
@@ -54,6 +50,8 @@ h1 {
 div.completed {
 	text-decoration: line-through;
 }
+
+
 </style>
 
 <body>
@@ -65,7 +63,7 @@ div.completed {
 
 <div id="container"></div>
 
-<p>Name: <input type="text" name=div></p>
+<p>Name: <input type="text"></p>
 <button>Add</button>
 
 
