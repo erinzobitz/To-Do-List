@@ -12,29 +12,27 @@
 
 $(function(){
 
-  $("button").click(function(){
-  var name =$("input:text").val();
-  $("#container").append("<div class = 'listItem'>" + name + "</div>");
-  $("input:text").val('');
+	$("button").click(function(){
+		var name =$("input:text").val();
+		$("#container").append("<div class = 'listItem'>" + name + "</div>");
+		$("input:text").val('');
+		$('#container').on('click', '.listItem', function () {
+			$this = $(this)
+			$this.toggleClass('completed')
+		});
 
-  });
-});
-
-  $('.listItem').click(function () {
-      $this = $(this)
-    $this.toggleClass('.completed')
+	});
 });
 
 
 
 </script>
-
-
-
-</script>
-
 
 <style>
+
+body {background-image:url('http://www.totalwallpapers.com/cartoons/wallpapers/1280/peanuts-charlie-brown-christmas.jpg');
+	  background-size: 1100x800;
+	  } 
 
 div {
 	padding: 20px;
@@ -57,14 +55,14 @@ div.completed {
 <body>
 
 
-<h1>
-	Chistmas Shopping List
-</h1>
+	<h1>
+		Chistmas Shopping List
+	</h1>
 
-<div id="container"></div>
+	<div id="container"></div>
 
-<p>Name: <input type="text"></p>
-<button>Add</button>
+	<p>Name: <input type="text"></p>
+	<button>Add</button>
 
 
 </body>
