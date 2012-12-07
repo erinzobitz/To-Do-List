@@ -1,6 +1,7 @@
 require "sinatra"
 require "sinatra/reloader"
 require 'debugger'
+require "lib/user_list"
 
 set :public_folder, File.dirname(__FILE__) + '/public'
 
@@ -10,41 +11,26 @@ get '/' do
 end
 
 post '/login' do
-	@email = params[:email]
-	@password = params[:password]
+	user = params[:user]
 
-	redirect "/list"
+	redirect "/list/#{user}"
 end
 
-get '/list' do
-	@items= []
-	File.open("list.txt", "r").each do |item|
-		@items << item 
-	end
-	erb :task 
-end
-
-post '/add' do
+get '/list/:name' do
+	@name = params[:name]
 	puts params
+	@items= []
+	File.open(@name, 'a+').each do |item|
+		@items << item 	
+	end
+	erb :list 
+end
+
+post '/add/:name' do
+	@name = params[:name]
 	@item = params[:listItem]  
-	File.open("list.txt", 'a+') do |file|
+	File.open(@name, 'a+') do |file|
 		file.puts @item
 	end
-	redirect "/list"
+	redirect "/list/#{@name}"
 end
-
-# def create
-    #@user = User.new(params[:user])
-    #@user.password = params[:password]
-   # @user.save!
- # end
-
-
- # def login
-  #  @user = User.find_by_email(params[:email])
-   # if @user.password == params[:password]
-    #  give_token
-   # else
-     # redirect_to home_url
-    #end
-  #end
