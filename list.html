@@ -8,6 +8,8 @@
 
 <script src="jquery-1.8.2.min.js"></script>
 
+<script src="jquery.cookies.2.2.0.js"></script>  
+
 <script type="text/javascript">
 
 $(function(){
@@ -18,7 +20,9 @@ $(function(){
 		$("input:text").val('');
 		$('#container').on('click', '.listItem', function () {
 			$this = $(this)
-			$this.toggleClass('completed')
+			$this.toggleClass('completed');
+			$.cookie("list", "name");
+			$('#container').cookify();
 		});
 
 	});
@@ -31,7 +35,7 @@ $(function(){
 <style>
 
 body {background-image:url('http://www.totalwallpapers.com/cartoons/wallpapers/1280/peanuts-charlie-brown-christmas.jpg');
-	  background-size: 1100x800;
+	  background-size: 1100x800
 	  } 
 
 div {

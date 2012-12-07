@@ -1,0 +1,15 @@
+<div class="hero-unit" id="container">
+	<form name="input" action="/add" method="post" id="form-submit">
+		Task: <input type="text" name="listItem" id="listItem">
+		<input type="submit" value="Submit">
+	</form>
+</div>
+
+<div>
+	<ul>
+		<%@items.each do | item | %>
+		<li><%= item %><br></li>
+		<% end %>
+	</ul>
+
+</div>
